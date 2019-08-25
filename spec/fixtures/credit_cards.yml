@@ -1,0 +1,6 @@
+credit_card_12345:
+  number: '12345'
+  code: '123'
+  current_amount: 999.0
+  user_name: 'Michael'
+  user_last_name: 'Scott'
