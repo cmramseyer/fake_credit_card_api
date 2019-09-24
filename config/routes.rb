@@ -12,5 +12,7 @@ Rails.application.routes.draw do
              }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :check_credit_card, only: [:index]
-  resources :credit_cards, only: [:index]
+  resources :credit_cards, only: [:index] do
+    resources :payments, only: [:index, :create]
+  end
 end

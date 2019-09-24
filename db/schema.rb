@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_150126) do
+ActiveRecord::Schema.define(version: 2019_09_24_012902) do
 
   create_table "credit_cards", force: :cascade do |t|
     t.string "number"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 2019_08_26_150126) do
   create_table "jwt_blacklist", force: :cascade do |t|
     t.string "jti", null: false
     t.index ["jti"], name: "index_jwt_blacklist_on_jti"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "credit_card_id"
+    t.float "amount_before"
+    t.float "payment_amount"
+    t.float "current_amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
