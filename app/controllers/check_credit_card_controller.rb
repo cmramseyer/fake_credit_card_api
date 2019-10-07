@@ -8,15 +8,15 @@ class CheckCreditCardController < ApplicationController
     if @credit_card
       if @credit_card.valid_code?(code)
         if @credit_card.valid_amount?(purchase_amount)
-          render json: {number: number, current_amount: @credit_card.current_amount, message: 'valid'}
+          render json: {id: @credit_card.id, number: number, current_amount: @credit_card.current_amount, message: 'valid'}
         else
-          render json: {number: number, message: 'invalid amount'}
+          render json: {id: @credit_card.id, number: number, message: 'invalid amount'}
         end
       else
-        render json: {number: number, message: 'invalid code'}
+        render json: {number: number, message: 'invalid code'}, status: 403
       end
     else
-      render json: {number: number, message: 'invalid number'}
+      render json: {number: number, message: 'invalid number'}, status: 403
     end
   end
 
