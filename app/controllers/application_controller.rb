@@ -6,7 +6,7 @@ class ApplicationController < ActionController::API
 
   def authenticate_user!
     return true if request.headers["authorization"] =="Bearer #{ENV['CREDIT_CARD_API_TOKEN']}"
-    false
+    super
   end
 
   def record_not_found(exception)
