@@ -15,4 +15,9 @@ Rails.application.routes.draw do
   resources :credit_cards, only: [:index] do
     resources :payments, only: [:index, :create]
   end
+  
+  devise_scope :user do
+    post '/signup', to: 'registrations#create'
+  end
+  match '*unmatched', to: 'application#route_not_found', via: :all
 end
