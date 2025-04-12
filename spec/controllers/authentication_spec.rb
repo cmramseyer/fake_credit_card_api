@@ -6,7 +6,7 @@ RSpec.describe 'POST /login', type: :request do
   
   context 'when params are correct' do
     before do
-      user.update_attributes(password: '12345678', password_confirmation: '12345678')
+      user.update(password: '12345678', password_confirmation: '12345678')
       post url, params: {user: {email: 'user@a.com', password: '12345678'}}
     end
 
